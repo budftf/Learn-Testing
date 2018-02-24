@@ -1,0 +1,2331 @@
+
+       Main Menu                    09/30/15
+   
+	Java Selenium Tutorial
+
+
+      1.   Java Tutorial
+      2.   Selenium Tutorial
+      x.   Exit
+
+      Type Your Option ___  
+ 
+
+         Java Tutorial            09/30/15
+   
+      0)  Running Java Program
+      1.  Hello Program
+        a)  Loop
+        b)  Split
+        c)  Substring
+        d)  IndexOf
+        e)  equals 
+
+      2.  Read/Write from File
+      3.  Read/Write Database
+      4.  Read/Write XML
+      5.  Read/Write Excel
+      6.  Define Class
+      7.  Constructor
+      5.  Inheritance
+      6.  Interface
+      7.  Polymorphism
+      8.  Abstract Class
+      9.  HashMap,Map,HashTable
+      10. Package
+      11. Ant
+      12. Junit
+      13. testng
+      14. Maven
+      15. Jar Files | war Files | Ear Files 
+      x.  exit
+
+     Type Your Option ___  
+ 
+
+	Selenium Tutorial
+
+     0.  Running Selenium Program
+     1.  Running selenium Programs using selenium jar files
+     2.  Selenium webdriver
+     3.  Using different Browser
+     4.  GetTitle 
+     5.  Findbyid,Name,Tag,classname, LinkText, Partial Link Text
+     6.  Installing firebug
+     7.  Cssselector
+     8.  Xpath
+     9.  Select from drop down list
+    10.  Mouse Movement and Keyboard
+    11.  getText,getPageSource()
+    12.  Findelement and FinElements
+    13.  Getting all the Links 
+    14.  Multiselect
+    15.  WebTables
+    16.  Handle Popup and Multiple windows
+    17.  parent element and descendants
+    18.  Working with the Frames 
+    19.  Selenium Grid 
+    20.  Create the Framework
+    x.   Exit
+
+    Type Your Option ___  
+//================================================================================= 
+Running Java Program
+//=================================================================================
+Install JDK 
+From Notepad create comp.bat
+
+set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79
+set PATH=%JAVA_HOME%\bin;%PATH %
+javac f1.java
+java -cp .  f1
+
+=================================================================================
+
+//================================================================================= 
+Running Selenium Program
+//=================================================================================
+Install JDK 
+From Notepad create comp.bat
+
+set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79
+set PATH=%JAVA_HOME%\bin;%PATH %
+javac -cp selenium-server-standalone-2.47.1.jar;selenium-java-2.47.1.jar  f1.java
+java -cp .;selenium-server-standalone-2.47.1.jar;selenium-java-2.47.1.jar  f1.java
+
+
+
+// ==============================================================================
+//                        Hello Program
+// ==============================================================================
+public class MyFirstJavaProgram {
+     static int empno=112;
+
+    public static void main(String []args) {
+       System.out.println("Hello World");
+    }
+} 
+
+// ==============================================================================
+//                      Read from a File
+// ==============================================================================
+
+	BufferedReader br = null;
+
+		try {
+
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader("C:\\testing.txt"));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+	}
+}
+
+
+// ==============================================================================
+//                       Read From User Console
+// ==============================================================================
+
+public class ReadConsole {
+   public static void main(String args[]) throws IOException
+   {
+      InputStreamReader cin = null;
+
+      try {
+         cin = new InputStreamReader(System.in);
+         System.out.println("Enter characters, 'q' to quit.");
+         char c;
+         do {
+            c = (char) cin.read();
+            System.out.print(c);
+         } while(c != 'q');
+      }finally {
+         if (cin != null) {
+            cin.close();
+         }
+      }
+   }
+}
+
+// ==============================================================================
+//                       Read From File
+// ==============================================================================
+
+
+import java.io.*;
+
+public class CopyFile {
+   public static void main(String args[]) throws IOException
+   {
+      FileInputStream in = null;
+      FileOutputStream out = null;
+
+      try {
+         in = new FileInputStream("input.txt");
+         out = new FileOutputStream("output.txt");
+         
+         int c;
+         while ((c = in.read()) != -1) {
+            out.write(c);
+         }
+      }finally {
+         if (in != null) {
+            in.close();
+         }
+         if (out != null) {
+            out.close();
+         }
+      }
+   }
+}
+// ==============================================================================
+//                       Copy File
+// ==============================================================================
+
+import java.io.*;
+
+public class CopyFile {
+   public static void main(String args[]) throws IOException
+   {
+      FileReader in = null;
+      FileWriter out = null;
+
+      try {
+         in = new FileReader("input.txt");
+         out = new FileWriter("output.txt");
+         
+         int c;
+         while ((c = in.read()) != -1) {
+            out.write(c);
+         }
+      }finally {
+         if (in != null) {
+            in.close();
+         }
+         if (out != null) {
+            out.close();
+         }
+      }
+   }
+}
+
+// ==============================================================================
+//                       Read From User Input
+// ==============================================================================
+
+public class ReadConsole {
+   public static void main(String args[]) throws IOException
+   {
+      InputStreamReader cin = null;
+
+      try {
+         cin = new InputStreamReader(System.in);
+         System.out.println("Enter characters, 'q' to quit.");
+         char c;
+         do {
+            c = (char) cin.read();
+            System.out.print(c);
+         } while(c != 'q');
+      }finally {
+         if (cin != null) {
+            cin.close();
+         }
+      }
+   }
+}
+
+// ======================================================================
+public class ReadFileExample 
+ {
+    public static void main(String[] args) 
+    {
+       System.out.println("Reading File from Java code");
+       //Name of the file
+       String fileName="RAILWAY.txt";
+       try{
+
+          //Create object of FileReader
+          FileReader inputFile = new FileReader(fileName);
+
+          //Instantiate the BufferedReader Class
+          BufferedReader bufferReader = new BufferedReader(inputFile);
+
+          //Variable to hold the one line data
+          String line;
+
+          // Read file line by line and print on the console
+          while ((line = bufferReader.readLine()) != null)   {
+            System.out.println(line);
+          }
+          //Close the buffer reader
+          bufferReader.close();
+       }catch(Exception e){
+          System.out.println("Error while reading file line by line:" + e.getMessage());                      
+       }
+
+     }
+  }
+
+// ==============================================================================
+//                       Java Constructor example
+// ==============================================================================
+
+class Language {
+  String name;
+ 
+  Language() {
+    System.out.println("Constructor method called.");
+  }
+ 
+  Language(String t) {
+    name = t;
+  }
+ 
+  public static void main(String[] args) {
+    Language cpp  = new Language();
+    Language java = new Language("Java");
+ 
+    cpp.setName("C++");
+ 
+    java.getName();
+    cpp.getName();
+  }
+ 
+  void setName(String t) {
+    name = t;
+  }
+ 
+  void getName() {
+    System.out.println("Language name: " + name);
+  }
+}
+
+
+class Student4{  
+   int id;  
+    String name;  
+      
+    Student4(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+   void display(){System.out.println(id+" "+name);}  
+   
+    public static void main(String args[]){  
+    Student4 s1 = new Student4(111,"Karan");  
+    Student4 s2 = new Student4(222,"Aryan");  
+    s1.display();  
+   s2.display();  
+  }  
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Student5{  
+2.    int id;  
+3.    String name;  
+4.    int age;  
+5.    Student5(int i,String n){  
+6.    id = i;  
+7.    name = n;  
+8.    }  
+9.    Student5(int i,String n,int a){  
+10.    id = i;  
+11.    name = n;  
+12.    age=a;  
+13.    }  
+14.    void display(){System.out.println(id+" "+name+" "+age);}  
+15.   
+16.    public static void main(String args[]){  
+17.    Student5 s1 = new Student5(111,"Karan");  
+18.    Student5 s2 = new Student5(222,"Aryan",25);  
+19.    s1.display();  
+20.    s2.display();  
+21.   }  
+22.}  
+
+===========================================================
+		Read From Database
+============================================================
+
+
+
+
+
+============================================================
+		For Loop and Arrays
+============================================================
+public class TestArray {
+
+   public static void main(String[] args) {
+      double[] myList = {1.9, 2.9, 3.4, 3.5};
+
+      // Print all the array elements
+      for (int i = 0; i < myList.length; i++) {
+         System.out.println(myList[i] + " ");
+      }
+      // Summing all elements
+      double total = 0;
+      for (int i = 0; i < myList.length; i++) {
+         total += myList[i];
+      }
+      System.out.println("Total is " + total);
+      // Finding the largest element
+      double max = myList[0];
+      for (int i = 1; i < myList.length; i++) {
+         if (myList[i] > max) max = myList[i];
+      }
+      System.out.println("Max is " + max);
+   }
+}
+==============================================================
+		Write the Objects Object serialization
+===============================================================
+
+public class Employee implements java.io.Serializable
+{
+   public String name;
+   public String address;
+   public transient int SSN;
+   public int number;
+   
+   public void mailCheck()
+   {
+      System.out.println("Mailing a check to " + name + " " + address);
+   }
+}
+
+========================================================
+
+import java.io.*;
+
+public class SerializeDemo
+{
+   public static void main(String [] args)
+   {
+      Employee e = new Employee();
+      e.name = "Reyan Ali";
+      e.address = "Phokka Kuan, Ambehta Peer";
+      e.SSN = 11122333;
+      e.number = 101;
+      
+      try
+      {
+         FileOutputStream fileOut =
+         new FileOutputStream("c:\java\employee.ser");
+         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         out.writeObject(e);
+         out.close();
+         fileOut.close();
+         System.out.printf("Serialized data is saved in c:\java\employee.ser");
+      }catch(IOException i)
+      {
+          i.printStackTrace();
+      }
+   }
+}
+
+========================================================
+
+import java.io.*;
+public class DeserializeDemo
+{
+   public static void main(String [] args)
+   {
+      Employee e = null;
+      try
+      {
+         FileInputStream fileIn = new FileInputStream("c:/tmp/employee.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         e = (Employee) in.readObject();
+         in.close();
+         fileIn.close();
+      }catch(IOException i)
+      {
+         i.printStackTrace();
+         return;
+      }catch(ClassNotFoundException c)
+      {
+         System.out.println("Employee class not found");
+         c.printStackTrace();
+         return;
+      }
+      System.out.println("Deserialized Employee...");
+      System.out.println("Name: " + e.name);
+      System.out.println("Address: " + e.address);
+      System.out.println("SSN: " + e.SSN);
+      System.out.println("Number: " + e.number);
+    }
+}
+
+// ================================================================
+
+
+import java.io.*;
+public class DeserializeDemo
+{
+   public static void main(String [] args)
+   {
+      Employee e = null;
+      try
+      {
+         FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         e = (Employee) in.readObject();
+         in.close();
+         fileIn.close();
+      }catch(IOException i)
+      {
+         i.printStackTrace();
+         return;
+      }catch(ClassNotFoundException c)
+      {
+         System.out.println("Employee class not found");
+         c.printStackTrace();
+         return;
+      }
+      System.out.println("Deserialized Employee...");
+      System.out.println("Name: " + e.name);
+      System.out.println("Address: " + e.address);
+      System.out.println("SSN: " + e.SSN);
+      System.out.println("Number: " + e.number);
+    }
+}
+
+// =============================================================
+//                 Exception
+// ==============================================================
+
+// File Name : ExcepTest.java
+import java.io.*;
+public class ExcepTest{
+
+   public static void main(String args[]){
+      try{
+         int a[] = new int[2];
+         System.out.println("Access element three :" + a[3]);
+      }catch(ArrayIndexOutOfBoundsException e){
+         System.out.println("Exception thrown  :" + e);
+      }
+      System.out.println("Out of the block");
+   }
+}
+// ===============================================================
+//                     HashMap
+// ==================================================================
+import java.util.*;
+
+public class CollectionsDemo {
+
+   public static void main(String[] args) {
+      Map m1 = new HashMap(); 
+      m1.put("Zara", "8");
+      m1.put("Mahnaz", "31");
+      m1.put("Ayan", "12");
+      m1.put("Daisy", "14");
+      System.out.println();
+      System.out.println(" Map Elements");
+      System.out.print("\t" + m1);
+   }
+}
+====================================================================
+
+Hashmap and HashTable both store key and value.
+
+2.Hashmap can store one key as null. Hashtable can't store null.
+
+3.HashMap is not synchronized but Hashtable is synchronized.
+
+4.HashMap can be synchronized with Collection.SyncronizedMap(map)
+
+// ===========================================================================
+//                                   TestHashMap
+// ===========================================================================
+class Dog {
+	String color;
+ 
+	Dog(String c) {
+		color = c;
+	}
+	public String toString(){	
+		return color + " dog";
+	}
+}
+ 
+public class TestHashMap {
+	public static void main(String[] args) {
+		HashMap<Dog, Integer> hashMap = new HashMap<Dog, Integer>();
+		Dog d1 = new Dog("red");
+		Dog d2 = new Dog("black");
+		Dog d3 = new Dog("white");
+		Dog d4 = new Dog("white");
+ 
+		hashMap.put(d1, 10);
+		hashMap.put(d2, 15);
+		hashMap.put(d3, 5);
+		hashMap.put(d4, 20);
+ 
+		//print size
+		System.out.println(hashMap.size());
+ 
+		//loop HashMap
+		for (Entry<Dog, Integer> entry : hashMap.entrySet()) {
+			System.out.println(entry.getKey().toString() + " - " + entry.getValue());
+		}
+	}
+}
+
+class Dog {
+	String color;
+ 
+	Dog(String c) {
+		color = c;
+	}
+ 
+	public boolean equals(Object o) {
+		return ((Dog) o).color.equals(this.color);
+	}
+ 
+	public int hashCode() {
+		return color.length();
+	}
+ 
+	public String toString(){	
+		return color + " dog";
+	}
+}
+ 
+public class TestHashMap {
+	public static void main(String[] args) {
+ 
+		Dog d1 = new Dog("red");
+		Dog d2 = new Dog("black");
+		Dog d3 = new Dog("white");
+		Dog d4 = new Dog("white");
+ 
+		LinkedHashMap<Dog, Integer> linkedHashMap = new LinkedHashMap<Dog, Integer>();
+		linkedHashMap.put(d1, 10);
+		linkedHashMap.put(d2, 15);
+		linkedHashMap.put(d3, 5);
+		linkedHashMap.put(d4, 20);
+ 
+		for (Entry<Dog, Integer> entry : linkedHashMap.entrySet()) {
+			System.out.println(entry.getKey() + " - " + entry.getValue());
+		}		
+	}
+}
+
+================================================================================================
+			Inheritance
+================================================================================
+
+class A {
+	public A() {
+		System.out.println("New A");
+	}
+}
+
+class B extends A {
+	public B() {
+		super();
+		System.out.println("New B");
+	}
+}
+
+
+=======================================
+
+public class MainClass {
+	public static void main(String[] args) {
+		Animal animal = new Animal();
+		Bird bird = new Bird();
+		Dog dog = new Dog();
+		
+		System.out.println();
+		
+		animal.sleep();
+		animal.eat();
+		
+		bird.sleep();
+		bird.eat();
+		
+		dog.sleep();
+		dog.eat();
+	}
+}
+
+public class Dog extends Animal {
+	public Dog() {
+		super();
+		System.out.println("A new dog has been created!");
+	}
+	
+	@Override
+	public void sleep() {
+		System.out.println("A dog sleeps...");
+	}
+	
+	@Override
+	public void eat() {
+		System.out.println("A dog eats...");
+	}
+}
+
+    class A{  
+    void msg(){System.out.println("Hello");}  
+    }  
+    class B{  
+    void msg(){System.out.println("Welcome");}  
+    }  
+    class C extends A,B{//suppose if it were  
+       
+     Public Static void main(String args[]){  
+       C obj=new C();  
+       obj.msg();//Now which msg() method would be invoked?  
+    }  
+    }  
+
+
+/* File name : Employee.java */
+public class Employee
+{
+   private String name;
+   private String address;
+   private int number;
+   public Employee(String name, String address, int number)
+   {
+      System.out.println("Constructing an Employee");
+      this.name = name;
+      this.address = address;
+      this.number = number;
+   }
+   public void mailCheck()
+   {
+      System.out.println("Mailing a check to " + this.name
+       + " " + this.address);
+   }
+   public String toString()
+   {
+      return name + " " + address + " " + number;
+   }
+   public String getName()
+   {
+      return name;
+   }
+   public String getAddress()
+   {
+      return address;
+   }
+   public void setAddress(String newAddress)
+   {
+      address = newAddress;
+   }
+   public int getNumber()
+   {
+     return number;
+   }
+}
+
+Now suppose we extend Employee class as follows:
+
+/* File name : Salary.java */
+public class Salary extends Employee
+{
+   private double salary; //Annual salary
+   public Salary(String name, String address, int number, double
+      salary)
+   {
+       super(name, address, number);
+       setSalary(salary);
+   }
+   public void mailCheck()
+   {
+       System.out.println("Within mailCheck of Salary class ");
+       System.out.println("Mailing check to " + getName()
+       + " with salary " + salary);
+   }
+   public double getSalary()
+   {
+       return salary;
+   }
+   public void setSalary(double newSalary)
+   {
+       if(newSalary >= 0.0)
+       {
+          salary = newSalary;
+       }
+   }
+   public double computePay()
+   {
+      System.out.println("Computing salary pay for " + getName());
+      return salary/52;
+   }
+}
+
+Now, you study the following program carefully and try to determine its output:
+
+/* File name : VirtualDemo.java */
+public class VirtualDemo
+{
+   public static void main(String [] args)
+   {
+      Salary s = new Salary("Mohd Mohtashim", "Ambehta, UP", 3, 3600.00);
+      Employee e = new Salary("John Adams", "Boston, MA", 2, 2400.00);
+      System.out.println("Call mailCheck using Salary reference --");
+      s.mailCheck();
+      System.out.println("\n Call mailCheck using Employee reference--");
+      e.mailCheck();
+    }
+}
+
+===========================================================================================
+			Encapsulation
+===========================================================================================
+
+/* File name : EncapTest.java */
+public class EncapTest{
+
+   private String name;
+   private String idNum;
+   private int age;
+
+   public int getAge(){
+      return age;
+   }
+
+   public String getName(){
+      return name;
+   }
+
+   public String getIdNum(){
+      return idNum;
+   }
+
+   public void setAge( int newAge){
+      age = newAge;
+   }
+
+   public void setName(String newName){
+      name = newName;
+   }
+
+   public void setIdNum( String newId){
+      idNum = newId;
+   }
+}
+
+The public setXXX() and getXXX() methods are the access points of the instance variables of the EncapTest class. Normally, these methods are referred as getters and setters. Therefore any class that wants to access the variables should access them through these getters and setters.
+
+The variables of the EncapTest class can be accessed as below::
+
+/* File name : RunEncap.java */
+public class RunEncap{
+
+   public static void main(String args[]){
+      EncapTest encap = new EncapTest();
+      encap.setName("James");
+      encap.setAge(20);
+      encap.setIdNum("12343ms");
+
+      System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());
+    }
+}
+// ===================================================================
+//                  Read from Excel
+// ====================================================================
+try {
+    POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
+    HSSFWorkbook wb = new HSSFWorkbook(fs);
+    HSSFSheet sheet = wb.getSheetAt(0);
+    HSSFRow row;
+    HSSFCell cell;
+
+    int rows; // No of rows
+    rows = sheet.getPhysicalNumberOfRows();
+
+    int cols = 0; // No of columns
+    int tmp = 0;
+
+    // This trick ensures that we get the data properly even if it doesn't start from first few rows
+    for(int i = 0; i < 10 || i < rows; i++) {
+        row = sheet.getRow(i);
+        if(row != null) {
+            tmp = sheet.getRow(i).getPhysicalNumberOfCells();
+            if(tmp > cols) cols = tmp;
+        }
+    }
+
+    for(int r = 0; r < rows; r++) {
+        row = sheet.getRow(r);
+        if(row != null) {
+            for(int c = 0; c < cols; c++) {
+                cell = row.getCell((short)c);
+                if(cell != null) {
+                    // Your code here
+                }
+            }
+        }
+    }
+} catch(Exception ioe) {
+  `	q`	fdsqfqbgnn   ioe.printStackTrace();
+}
+
+// ====================================================================
+package com.howtodoinjava.demo.poi;
+//import statements
+public class WriteExcelDemo
+{
+    public static void main(String[] args)
+    {
+        //Blank workbook
+        XSSFWorkbook workbook = new XSSFWorkbook();
+         
+        //Create a blank sheet
+        XSSFSheet sheet = workbook.createSheet("Employee Data");
+          
+        //This data needs to be written (Object[])
+        Map<String, Object[]> data = new TreeMap<String, Object[]>();
+        data.put("1", new Object[] {"ID", "NAME", "LASTNAME"});
+        data.put("2", new Object[] {1, "Amit", "Shukla"});
+        data.put("3", new Object[] {2, "Lokesh", "Gupta"});
+        data.put("4", new Object[] {3, "John", "Adwards"});
+        data.put("5", new Object[] {4, "Brian", "Schultz"});
+          
+        //Iterate over data and write to sheet
+        Set<String> keyset = data.keySet();
+        int rownum = 0;
+        for (String key : keyset)
+        {
+            Row row = sheet.createRow(rownum++);
+            Object [] objArr = data.get(key);
+            int cellnum = 0;
+            for (Object obj : objArr)
+            {
+               Cell cell = row.createCell(cellnum++);
+               if(obj instanceof String)
+                    cell.setCellValue((String)obj);
+                else if(obj instanceof Integer)
+                    cell.setCellValue((Integer)obj);
+            }
+        }
+        try
+        {
+            //Write the workbook in file system
+            FileOutputStream out = new FileOutputStream(new File("howtodoinjava_demo.xlsx"));
+            workbook.write(out);
+            out.close();
+            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+// ==============================================================================
+//      Java Threading
+// ==============================================================================
+class RunnableDemo implements Runnable {
+   private Thread t;
+   private String threadName;
+   
+   RunnableDemo( String name){
+       threadName = name;
+       System.out.println("Creating " +  threadName );
+   }
+   public void run() {
+      System.out.println("Running " +  threadName );
+      try {
+         for(int i = 4; i > 0; i--) {
+            System.out.println("Thread: " + threadName + ", " + i);
+            // Let the thread sleep for a while.
+            Thread.sleep(50);
+         }
+     } catch (InterruptedException e) {
+         System.out.println("Thread " +  threadName + " interrupted.");
+     }
+     System.out.println("Thread " +  threadName + " exiting.");
+   }
+   
+   public void start ()
+   {
+      System.out.println("Starting " +  threadName );
+      if (t == null)
+      {
+         t = new Thread (this, threadName);
+         t.start ();
+      }
+   }
+
+}
+
+public class TestThread {
+   public static void main(String args[]) {
+   
+      RunnableDemo R1 = new RunnableDemo( "Thread-1");
+      R1.start();
+      
+      RunnableDemo R2 = new RunnableDemo( "Thread-2");
+      R2.start();
+   }   
+}
+
+
+
+class ThreadDemo extends Thread {
+   private Thread t;
+   private String threadName;
+   
+   ThreadDemo( String name){
+       threadName = name;
+       System.out.println("Creating " +  threadName );
+   }
+   public void run() {
+      System.out.println("Running " +  threadName );
+      try {
+         for(int i = 4; i > 0; i--) {
+            System.out.println("Thread: " + threadName + ", " + i);
+            // Let the thread sleep for a while.
+            Thread.sleep(50);
+         }
+     } catch (InterruptedException e) {
+         System.out.println("Thread " +  threadName + " interrupted.");
+     }
+     System.out.println("Thread " +  threadName + " exiting.");
+   }
+   
+   public void start ()
+   {
+      System.out.println("Starting " +  threadName );
+      if (t == null)
+      {
+         t = new Thread (this, threadName);
+         t.start ();
+      }
+   }
+
+}
+
+public class TestThread {
+   public static void main(String args[]) {
+   
+      ThreadDemo T1 = new ThreadDemo( "Thread-1");
+      T1.start();
+      
+      ThreadDemo T2 = new ThreadDemo( "Thread-2");
+      T2.start();
+   }   
+}
+// ================================================================================
+//                Write to Excel
+// ================================================================================
+
+poi-demo-write-file
+Reading an excel file
+
+Reading an excel file is also very simple if we divide this in steps.
+
+    Create workbook instance from excel sheet
+    Get to the desired sheet
+    Increment row number
+    iterate over all cells in a row
+    repeat step 3 and 4 until all data is read
+
+Lets see all above steps in code. I am writing the code to read the excel file created in above example.
+package com.howtodoinjava.demo.poi;
+//import statements
+public class ReadExcelDemo
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            FileInputStream file = new FileInputStream(new File("howtodoinjava_demo.xlsx"));
+ 
+            //Create Workbook instance holding reference to .xlsx file
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+ 
+            //Get first/desired sheet from the workbook
+            XSSFSheet sheet = workbook.getSheetAt(0);
+ 
+            //Iterate through each rows one by one
+            Iterator<Row> rowIterator = sheet.iterator();
+            while (rowIterator.hasNext())
+            {
+                Row row = rowIterator.next();
+                //For each row, iterate through all the columns
+                Iterator<Cell> cellIterator = row.cellIterator();
+                 
+                while (cellIterator.hasNext())
+                {
+                    Cell cell = cellIterator.next();
+                    //Check the cell type and format accordingly
+                    switch (cell.getCellType())
+                    {
+                        case Cell.CELL_TYPE_NUMERIC:
+                            System.out.print(cell.getNumericCellValue() + "t");
+                            break;
+                        case Cell.CELL_TYPE_STRING:
+                            System.out.print(cell.getStringCellValue() + "t");
+                            break;
+                    }
+                }
+                System.out.println("");
+            }
+            file.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+ 
+Output:
+ 
+ID      NAME        LASTNAME
+1.0     Amit        Shukla 
+2.0     Lokesh      Gupta  
+3.0     John        Adwards
+4.0     Brian       Schultz
+
+Using formulas in excel sheet
+
+When working on complex excel sheets, we encounter many cells which have formula to calculate their values. These are formula cells. Apache POI has excellent support for adding formula cells and evaluating already present formula cells also.
+
+Les see one example of how to set formula cells in excel?
+
+In this code, there are four cells in a row and fourth one in multiplication of all previous 3 rows. So the formula will be : A2*B2*C2 (in second row)
+public static void main(String[] args)
+{
+    XSSFWorkbook workbook = new XSSFWorkbook();
+    XSSFSheet sheet = workbook.createSheet("Calculate Simple Interest");
+  
+    Row header = sheet.createRow(0);
+    header.createCell(0).setCellValue("Pricipal");
+    header.createCell(1).setCellValue("RoI");
+    header.createCell(2).setCellValue("T");
+    header.createCell(3).setCellValue("Interest (P r t)");
+      
+    Row dataRow = sheet.createRow(1);
+    dataRow.createCell(0).setCellValue(14500d);
+    dataRow.createCell(1).setCellValue(9.25);
+    dataRow.createCell(2).setCellValue(3d);
+    dataRow.createCell(3).setCellFormula("A2*B2*C2");
+      
+    try {
+        FileOutputStream out =  new FileOutputStream(new File("formulaDemo.xlsx"));
+        workbook.write(out);
+        out.close();
+        System.out.println("Excel with foumula cells written successfully");
+          
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+Similarly, I you want to read a file which have formula cells in it, use following logic to evaluate the formula cells.
+public static void readSheetWithFormula()
+{
+    try
+    {
+        FileInputStream file = new FileInputStream(new File("formulaDemo.xlsx"));
+ 
+        //Create Workbook instance holding reference to .xlsx file
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+ 
+        FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+         
+        //Get first/desired sheet from the workbook
+        XSSFSheet sheet = workbook.getSheetAt(0);
+ 
+        //Iterate through each rows one by one
+        Iterator<Row> rowIterator = sheet.iterator();
+        while (rowIterator.hasNext())
+        {
+            Row row = rowIterator.next();
+            //For each row, iterate through all the columns
+            Iterator<Cell> cellIterator = row.cellIterator();
+             
+            while (cellIterator.hasNext())
+            {
+                Cell cell = cellIterator.next();
+                //Check the cell type after eveluating formulae
+                //If it is formula cell, it will be evaluated otherwise no change will happen
+                switch (evaluator.evaluateInCell(cell).getCellType())
+                {
+                    case Cell.CELL_TYPE_NUMERIC:
+                        System.out.print(cell.getNumericCellValue() + "tt");
+                        break;
+                    case Cell.CELL_TYPE_STRING:
+                        System.out.print(cell.getStringCellValue() + "tt");
+                        break;
+                    case Cell.CELL_TYPE_FORMULA:
+                        //Not again
+                        break;
+                }
+            }
+            System.out.println("");
+        }
+        file.close();
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
+}
+ 
+Output:
+ 
+Pricipal        RoI         T       Interest (P r t)       
+14500.0         9.25        3.0     402375.0   
+
+poi-demo-write-formula
+
+Formatting the cells
+
+So for we have seen the examples of reading/ writing and excel file using apache POI. But, when we are creating a report in excel file and it becomes utmost important to add formatting on cells which fit into any per-determined criteria. This formatting can be a different coloring based on certain value range, based on expiry date limit etc.
+
+In below examples, I am taking couple of such formatting examples for various purposes.
+1) Cell value is in between a certain range
+
+This piece of code will color any cell in range whose value is between a configured range. [e.g. between 50 and 70]
+static void basedOnValue(Sheet sheet)
+{
+    //Creating some random values
+    sheet.createRow(0).createCell(0).setCellValue(84);
+    sheet.createRow(1).createCell(0).setCellValue(74);
+    sheet.createRow(2).createCell(0).setCellValue(50);
+    sheet.createRow(3).createCell(0).setCellValue(51);
+    sheet.createRow(4).createCell(0).setCellValue(49);
+    sheet.createRow(5).createCell(0).setCellValue(41);
+ 
+    SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
+ 
+    //Condition 1: Cell Value Is   greater than  70   (Blue Fill)
+    ConditionalFormattingRule rule1 = sheetCF.createConditionalFormattingRule(ComparisonOperator.GT, "70");
+    PatternFormatting fill1 = rule1.createPatternFormatting();
+    fill1.setFillBackgroundColor(IndexedColors.BLUE.index);
+    fill1.setFillPattern(PatternFormatting.SOLID_FOREGROUND);
+ 
+    //Condition 2: Cell Value Is  less than      50   (Green Fill)
+    ConditionalFormattingRule rule2 = sheetCF.createConditionalFormattingRule(ComparisonOperator.LT, "50");
+    PatternFormatting fill2 = rule2.createPatternFormatting();
+    fill2.setFillBackgroundColor(IndexedColors.GREEN.index);
+    fill2.setFillPattern(PatternFormatting.SOLID_FOREGROUND);
+ 
+    CellRangeAddress[] regions = {
+            CellRangeAddress.valueOf("A1:A6")
+    };
+ 
+    sheetCF.addConditionalFormatting(regions, rule1, rule2);
+}
+
+poi-demo-formatting-1
+2) Highlight duplicate values
+
+Highlight all cells which have duplicate values in observed cells
+static void formatDuplicates(Sheet sheet) {
+    sheet.createRow(0).createCell(0).setCellValue("Code");
+    sheet.createRow(1).createCell(0).setCellValue(4);
+    sheet.createRow(2).createCell(0).setCellValue(3);
+    sheet.createRow(3).createCell(0).setCellValue(6);
+    sheet.createRow(4).createCell(0).setCellValue(3);
+    sheet.createRow(5).createCell(0).setCellValue(5);
+    sheet.createRow(6).createCell(0).setCellValue(8);
+    sheet.createRow(7).createCell(0).setCellValue(0);
+    sheet.createRow(8).createCell(0).setCellValue(2);
+    sheet.createRow(9).createCell(0).setCellValue(8);
+    sheet.createRow(10).createCell(0).setCellValue(6);
+ 
+    SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
+ 
+    // Condition 1: Formula Is   =A2=A1   (White Font)
+    ConditionalFormattingRule rule1 = sheetCF.createConditionalFormattingRule("COUNTIF($A$2:$A$11,A2)>1");
+    FontFormatting font = rule1.createFontFormatting();
+    font.setFontStyle(false, true);
+    font.setFontColorIndex(IndexedColors.BLUE.index);
+ 
+    CellRangeAddress[] regions = {
+            CellRangeAddress.valueOf("A2:A11")
+    };
+ 
+    sheetCF.addConditionalFormatting(regions, rule1);
+ 
+    sheet.getRow(2).createCell(1).setCellValue("<== Duplicates numbers in the column are highlighted.  " +
+            "Condition: Formula Is =COUNTIF($A$2:$A$11,A2)>1   (Blue Font)");
+}
+
+poi-demo-formatting-2
+3) Color alternate rows in different colors
+
+A simple code to color each alternate row in a different color
+static void shadeAlt(Sheet sheet) {
+    SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
+ 
+    // Condition 1: Formula Is   =A2=A1   (White Font)
+    ConditionalFormattingRule rule1 = sheetCF.createConditionalFormattingRule("MOD(ROW(),2)");
+    PatternFormatting fill1 = rule1.createPatternFormatting();
+    fill1.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.index);
+    fill1.setFillPattern(PatternFormatting.SOLID_FOREGROUND);
+ 
+    CellRangeAddress[] regions = {
+            CellRangeAddress.valueOf("A1:Z100")
+    };
+ 
+    sheetCF.addConditionalFormatting(regions, rule1);
+ 
+    sheet.createRow(0).createCell(1).setCellValue("Shade Alternating Rows");
+    sheet.createRow(1).createCell(1).setCellValue("Condition: Formula Is  =MOD(ROW(),2)   (Light Green Fill)");
+}
+
+poi-demo-formatting-3
+4) Color amounts which are going to expire in next 30 days
+
+A very useful code for financial projects which keep track of dead lines.
+static void expiryInNext30Days(Sheet sheet)
+{
+    CellStyle style = sheet.getWorkbook().createCellStyle();
+    style.setDataFormat((short)BuiltinFormats.getBuiltinFormat("d-mmm"));
+ 
+    sheet.createRow(0).createCell(0).setCellValue("Date");
+    sheet.createRow(1).createCell(0).setCellFormula("TODAY()+29");
+    sheet.createRow(2).createCell(0).setCellFormula("A2+1");
+    sheet.createRow(3).createCell(0).setCellFormula("A3+1");
+ 
+    for(int rownum = 1; rownum <= 3; rownum++) sheet.getRow(rownum).getCell(0).setCellStyle(style);
+ 
+    SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
+ 
+    // Condition 1: Formula Is   =A2=A1   (White Font)
+    ConditionalFormattingRule rule1 = sheetCF.createConditionalFormattingRule("AND(A2-TODAY()>=0,A2-TODAY()<=30)");
+    FontFormatting font = rule1.createFontFormatting();
+    font.setFontStyle(false, true);
+    font.setFontColorIndex(IndexedColors.BLUE.index);
+ 
+    CellRangeAddress[] regions = {
+            CellRangeAddress.valueOf("A2:A4")
+    };
+ 
+    sheetCF.addConditionalFormatting(regions, rule1);
+ 
+    sheet.getRow(0).createCell(1).setCellValue("Dates within the next 30 days are highlighted");
+}
+
+// =========================================================
+//             java reflection
+// ===========================================================
+
+
+Method[] methods = MyObject.class.getMethods();
+
+for(Method method : methods){
+    System.out.println("method = " + method.getName());
+}
+
+
+package myreflection;
+import java.lang.reflect.Method;
+ 
+public class ReflectionHelloWorld {
+	public static void main(String[] args){
+		Foo f = new Foo();
+		System.out.println(f.getClass().getName());			
+	}
+}
+ 
+class Foo {
+	public void print() {
+		System.out.println("abc");
+	}
+}
+// ==========================================================
+import java.lang.reflect.Method;
+import java.lang.Class;
+
+
+Method findInheritedMethod(Class classType, 
+String theMethodName, Class [] methodParamTypes)
+{
+  Method inheritedMethod = null;
+  while(classType != null)  {
+        try  {
+          inheritedMethod = 
+classType.getDeclaredMethod(theMethodName, methodParamTypes);
+
+        break;
+      }
+   
+      catch (NoSuchMethodException ex)  {
+ 
+      classType = classType.getSuperclass( ); 
+         
+      }
+      return inheritedMethod ;
+}
+
+// =====================================================================
+//             Interface
+// =====================================================================
+
+ cannot instantiate an interface.
+
+An interface does not contain any constructors.
+
+All of the methods in an interface are abstract.
+
+An interface cannot contain instance fields. The only fields that can appear in an interface must be declared both static and final.
+
+An interface is not extended by a class; it is implemented by a class.
+
+An interface can extend multiple interfaces.
+
+
+/* File name : Animal.java */
+interface Animal {
+
+   public void eat();
+   public void travel();
+}
+
+
+
+
+* File name : MammalInt.java */
+public class MammalInt implements Animal{
+
+   public void eat(){
+      System.out.println("Mammal eats");
+   }
+
+   public void travel(){
+      System.out.println("Mammal travels");
+   } 
+
+   public int noOfLegs(){
+      return 0;
+   }
+
+   public static void main(String args[]){
+      MammalInt m = new MammalInt();
+      m.eat();
+      m.travel();
+   }
+} 
+
+
+
+
+    A class can implement more than one interface at a time.
+
+    A class can extend only one class, but implement many interfaces.
+
+    An interface can extend another interface, similarly to the way that a class can extend another class.
+
+public interface Sports
+{
+   public void setHomeTeam(String name);
+   public void setVisitingTeam(String name);
+}
+
+//Filename: Football.java
+public interface Football extends Sports
+{
+   public void homeTeamScored(int points);
+   public void visitingTeamScored(int points);
+   public void endOfQuarter(int quarter);
+}
+
+//Filename: Hockey.java
+public interface Hockey extends Sports
+{
+   public void homeGoalScored();
+   public void visitingGoalScored();
+   public void endOfPeriod(int period);
+   public void overtimePeriod(int ot);
+}
+
+// =========================================================
+//         abstract class
+// ==========================================================
+abstract class Figure {
+double dim1;
+double dim2;
+Figure(double a, double b) {
+dim1 = a;
+dim2 = b;
+}
+// area is now an abstract method
+abstract double area();
+}
+
+class Rectangle extends Figure {
+Rectangle(double a, double b) {
+super(a, b);
+}
+// override area for rectangle
+double area() {
+System.out.println("Inside Area for Rectangle.");
+return dim1 * dim2;
+}
+}
+
+class Triangle extends Figure {
+Triangle(double a, double b) {
+super(a, b);
+}
+// override area for right triangle
+double area() {
+System.out.println("Inside Area for Triangle.");
+return dim1 * dim2 / 2;
+}
+}
+
+class AbstractAreas {
+public static void main(String args[]) {
+// Figure f = new Figure(10, 10); // illegal now
+Rectangle r = new Rectangle(9, 5);
+Triangle t = new Triangle(10, 8);
+Figure figref; // this is OK, no object is created
+figref = r;
+System.out.println("Area is " + figref.area());
+figref = t;
+System.out.println("Area is " + figref.area());
+}
+}
+
+
+
+package com.journaldev.design;
+
+//abstract class
+public abstract class Person {
+	
+	private String name;
+	private String gender;
+	
+	public Person(String nm, String gen){
+		this.name=nm;
+		this.gender=gen;
+	}
+	
+	//abstract method
+	public abstract void work();
+	
+	@Override
+	public String toString(){
+		return "Name="+this.name+"::Gender="+this.gender;
+	}
+	
+}
+
+
+Employee.java
+package com.journaldev.design;
+ 
+public class Employee extends Person {
+     
+    private int empId;
+     
+    public Employee(String nm, String gen, int id) {
+        super(nm, gen);
+        this.empId=id;
+    }
+ 
+    @Override
+    public void work() {
+        if(empId == 0){
+            System.out.println("Not working");
+        }else{
+            System.out.println("Working as employee!!");
+        }
+    }
+     
+    public static void main(String args[]){
+        //coding in terms of abstract classes
+        Person student = new Employee("Dove","Female",0);
+        Person employee = new Employee("Pankaj","Male",123);
+        student.work();
+        employee.work();
+        //using method implemented in abstract class - inheritance
+        employee.changeName("Pankaj Kumar");
+        System.out.println(employee.toString());
+    }
+ 
+}
+
+
+
+There are situations in which you will want to define a superclass that declares
+ the structure of a given abstraction without providing a complete implementation of
+ every method. That is, sometimes you will want to create a superclass that only 
+defines a generalized form that will be shared by all of its subclasses, leaving it 
+to each subclass to fill in the details. Such a class determines the nature of the 
+methods that the subclasses must implement. One way this situation can occur is when
+ a superclass is unable to create a meaningful implementation for a method. This is 
+the case with the class Figure used in the preceding example. The definition of 
+area( ) is simply a placeholder. It will not compute and display the area of any 
+type of object. 
+
+// ==================================================================
+//               testng
+// ===================================================================
+
+package com.example.logging;
+
+import org.testng.annotations.Test;
+
+public class LoggingClass {
+
+	@Test(priority = 0)
+	public void methodAddingNumbers() {
+		System.out.println("Helloo.. Im in method adding numbers");
+	}
+
+	@Test(priority = 1)
+	public void dividedByZero() {
+		System.out.println("Helloo.. Im in method divided by zero");
+		int e = 1 / 0;
+	}
+
+	@Test(dependsOnMethods = { "dividedByZero" })
+	public void methodSkip() {
+		System.out.println("Helloo.. Im in method skip");
+	}
+
+}package com.example.logging;
+
+import org.testng.IClass;
+import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
+
+public class ListenerClass extends TestListenerAdapter {
+
+	@Override
+	public void onTestStart(ITestResult tr) {
+		log("Test Started....");
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult tr) {
+
+		log("Test '" + tr.getName() + "' PASSED");
+
+		// This will print the class name in which the method is present
+		log(tr.getTestClass());
+
+		// This will print the priority of the method.
+		// If the priority is not defined it will print the default priority as
+		// 'o'
+		log("Priority of this method is " + tr.getMethod().getPriority());
+
+		System.out.println(".....");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult tr) {
+
+		log("Test '" + tr.getName() + "' FAILED");
+		log("Priority of this method is " + tr.getMethod().getPriority());
+		System.out.println(".....");
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult tr) {
+		log("Test '" + tr.getName() + "' SKIPPED");
+		System.out.println(".....");
+	}
+
+	private void log(String methodName) {
+		System.out.println(methodName);
+	}
+
+	private void log(IClass testClass) {
+		System.out.println(testClass);
+	}
+}
+
+Apart from the above methods, you can also add many other methods which are present in 'TestListenerAdapter' class.
+
+Please click here for more  'TestListenerAdapter' classes 
+
+Step 3: The below is the testng.xml file.
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Log Suite Example" verbose="1">
+	<listeners>
+		<listener class-name="com.example.logging.ListenerClass" />
+	</listeners>
+
+	<test name="TestNG logs sample" preserve-order="true">
+		<classes>
+			<class name="com.example.logging.LoggingClass">
+				<methods>
+					<include name="methodAddingNumbers" />
+					<include name="dividedByZero" />
+					<include name="methodSkip" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>
+
+In the above testng.xml file, We need to pass the class name where we have the test methods. And also we should define listeners in testng.xml file so that TestNG can use them to rewrite the annotations.
+
+The below is the ouput :
+[TestNG] Running:
+  G:\TestNG\TestNGExamples\testng.xml
+
+Test Started....
+Helloo.. Im in method adding numbers
+Test 'methodAddingNumbers' PASSED
+[TestClass name=class com.example.logging.LoggingClass]
+Priority of this method is 0
+.....
+Test Started....
+Helloo.. Im in method divided by zero
+Test 'dividedByZero' FAILED
+Priority of this method is 1
+.....
+Test 'methodSkip' SKIPPED
+.....
+
+===============================================
+Log Suite Example
+Total tests run: 3, Failures: 1, Skips: 1
+===============================================
+
+
+
+
+// =================================================================
+//            Selenium First Program
+// ==================================================================
+
+
+package mypackage;
+ 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class myclass {
+ 
+    public static void main(String[] args) {
+        // declaration and instantiation of objects/variables
+        WebDriver driver = new FirefoxDriver();
+        String baseUrl = "http://newtours.demoaut.com";
+        String expectedTitle = "Welcome: Mercury Tours";
+        String actualTitle = "";
+ 
+        // launch Firefox and direct it to the Base URL
+        driver.get(baseUrl);
+ 
+        // get the actual value of the title
+        actualTitle = driver.getTitle();
+ 
+        /*
+         * compare the actual title of the page witht the expected one and print
+         * the result as "Passed" or "Failed"
+         */
+        if (actualTitle.contentEquals(expectedTitle)){
+            System.out.println("Test Passed!");
+        } else {
+            System.out.println("Test Failed");
+        }
+        
+        //close Firefox
+        driver.close();
+        
+        // exit the program explicitly
+        System.exit(0);
+    }
+ 
+}
+
+=======================================================
+
+package mypackage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+public class myclass {
+ 
+    public static void main(String[] args) {
+        WebDriver driver = new FirefoxDriver();
+        String baseUrl = "http://www.facebook.com";
+        String tagName = "";
+ 
+        driver.get(baseUrl);
+        tagName = driver.findElement(By.id("email")).getTagName();
+        System.out.println(tagName);
+        driver.close();
+        System.exit(0);
+    }
+}
+
+
+===========================================================
+
+package pageObjects;
+
+    import org.openqa.selenium.By;
+
+    import org.openqa.selenium.WebDriver;
+
+    import org.openqa.selenium.WebElement;
+
+ public class Home_Page {
+
+    private static WebElement element = null;
+
+ public static WebElement lnk_MyAccount(WebDriver driver){
+
+    element = driver.findElement(By.id("account"));
+
+    return element;
+
+    }
+
+ public static WebElement lnk_LogOut(WebDriver driver){
+
+    element = driver.findElement(By.id("account_logout"));
+
+ return element;
+
+    }
+
+}
+
+
+ package pageObjects;
+
+import org.openqa.selenium.*;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+public class LogIn_Page {
+
+        private static WebElement element = null;
+
+    public static WebElement txtbx_UserName(WebDriver driver){
+
+         element = driver.findElement(By.id("log"));
+
+         return element;
+
+         }
+
+     public static WebElement txtbx_Password(WebDriver driver){
+
+         element = driver.findElement(By.id("pwd"));
+
+         return element;
+
+         }
+
+     public static WebElement btn_LogIn(WebDriver driver){
+
+         element = driver.findElement(By.id("login"));
+
+         return element;
+
+         }
+
+}
+
+
+package automationFramework;
+
+     import java.util.concurrent.TimeUnit;
+
+     import org.openqa.selenium.WebDriver;
+
+     import org.openqa.selenium.firefox.FirefoxDriver;
+
+     // Import package pageObject.*
+
+     import pageObjects.Home_Page;
+
+     import pageObjects.LogIn_Page;
+
+public class PageObjectModel {
+
+     private static WebDriver driver = null;
+
+   public static void main(String[] args) {
+
+     driver = new FirefoxDriver();
+
+     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+     driver.get("http://www.store.demoqa.com");
+
+     // Use page Object library now
+
+     Home_Page.lnk_MyAccount(driver).click();
+
+     LogIn_Page.txtbx_UserName(driver).sendKeys("testuser_1");
+
+     LogIn_Page.txtbx_Password(driver).sendKeys("Test@123");
+
+     LogIn_Page.btn_LogIn(driver).click();
+
+     System.out.println(" Login Successfully, now it is the time to Log Off buddy.")
+
+     Home_Page.lnk_LogOut(driver).click(); 
+
+     driver.quit();
+
+     }
+
+}
+==========================================================
+
+By.className
+finds elements based on the value of the "class" attribute
+findElement(By.className("someClassName"))
+
+By.cssSelector
+finds elements based on the driver's underlying CSS Selector engine
+findElement(By.cssSelector("input#email"))
+
+By.id
+locates elements by the value of their "id" attribute
+findElement(By.id("someId"))
+
+By.linkText
+finds a link element by the exact text it displays
+findElement(By.linkText("REGISTRATION"))
+
+By.name
+locates elements by the value of the "name" attribute
+findElement(By.name("someName"))
+
+By.partialLinkText
+locates elements that contain the given link text
+findElement(By.partialLinkText("REG"))
+
+By.tagName
+locates elements by their tag name
+findElement(By.tagName("div"))
+
+By.xpath
+
+locates elements via XPath
+findElement(By.xpath("//html/body/div/table/tbody/tr/td[2]/table/
+tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[2]/td[3]/form/table/tbody/tr[5]"))
+
+=====================================================================
+               Cssselector Example
+====================================================================
+package mypackage;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class myclass {
+ 
+    public static void main(String[] args) {
+        WebDriver driver = new FirefoxDriver();
+        String alertMessage = "";
+ 
+        driver.get("http://jsbin.com/usidix/1");
+        driver.findElement(By.cssSelector("input[value=\"Go!\"]")).click();
+        alertMessage = driver.switchTo().alert().getText();
+        driver.switchTo().alert().accept();
+        
+        System.out.println(alertMessage);
+        driver.quit();
+        
+    }
+}
+============================================================
+          Closing the Driver
+=============================================================
+
+WebDriver.Close() - Close the browser window that the driver has focus of
+webDriver.Quit() - Calls dispose
+webDriver.Dispose() Closes all browser windows and safely ends the session
+
+public IWebDriver Driver;
+
+[SetUp]
+public void SetupTest()
+{
+    Driver = WebDriverFactory.GetDriver();
+}
+
+[TearDown]
+public void TearDown()
+{
+    if (Driver != null)
+      Driver.Quit();
+}
+// ===================================================================
+//                  Closing Multiple Window
+// ====================================================================
+
+handle = page.driver.find_window("My window title")
+
+# Close it
+page.driver.browser.switch_to.window(handle)
+page.driver.browser.close
+
+# Have the Selenium driver point to another window
+last_handle = page.driver.browser.window_handles.last
+page.driver.browser.switch_to.window(last_handle)
+
+String base = driver.getWindowHandle();
+
+    Set <String> set = driver.getWindowHandles();
+
+    set.remove(base);
+    assert set.size()==1;
+
+    driver.switchTo().window(set.toArray(String[0]));
+
+    driver.close();
+    driver.switchTo().window(base);
+
+
+public static void selectMultipelValues(String multipleVals){
+
+   String multipleSel[] = multipleVals.split(",");
+
+   for (String valueToBeSelected : multipleSel) {
+
+new Select(driver.findElement(By.id(propId))).selectByVisibleText(valueToBeSelected);
+driver.findElement(By.id(ddObj)).sendKeys(Keys.CONTROL);
+
+}
+
+}
+// ==================================================================
+WebElement loginButton = driver.findElement(By.cssSelector(".login"));
+WebElement userName = driver.findElement(By.cssSelector("#username"));
+WebElement userName = driver.findElement(By.cssSelector("input[name=username]"));
+WebElement previousButton =
+driver.findElement(By.cssSelector("img[alt='Previous']"));
+WebElement previousButton = driver.findElement(By.cssSelector("input[t
+ype='submit'][value='Login']")); 
+
+// ===================================================================
+driver.findElement(By.cssSelector("input[name=\"firstName2\"]")).sendKeys("Test");#sthash.jhWQM1Sl.dpuf
+driver.findElement(By.cssSelector(".Automation")).click();
+Here .Automation will select all elements of class 'Automation'. - See more at: http://artoftesting.com/automationTesting/cssSelector.html#sthash.jhWQM1Sl.dpuf
+driver.findElement(By.cssSelector("div input")).sendKeys("Test");
+OR
+driver.findElement(By.cssSelector("div#parentDiv input#fname")).sendKeys("Test"); - See more at: http://artoftesting.com/automationTesting/cssSelector.html#sthash.jhWQM1Sl.dpuf
+
+By.cssSelector("input[name=email]")
+String a = driver.findElement(By.cssSelector("form#frmlogin div.form-group:nth-child(1)>span")).getText();
+System.out.println(a);
+WebElement ele1 = driver.findElement(By.cssSelector(".primary-btn"));
+WebElement ele2 = driver.findElement(By.cssSelector("btn.primary-btn"));
+WebElement ele3 = driver.findElement(By.cssSelector("btn.primary-btn"));
+
+WebElement Email = driver.findElement(By.cssSelector("input[id=email]"));
+Email.SendKeys("hello@sampleemail.com");
+css=input[id^='ema']
+css=img[alt='Mercury Tours'] and
+Xpath - //img[@alt='Facebook logo']
+Strategy X Path
+Sizzle(CSS) Comments Element //div div locate first div element By id //div[@id=∆eleid∆] div#eleid Locate div with id eleid By class //div[@class=∆eleclass∆]
+
+//div[contains(@class,∆eleclass∆)]
+
+String a = driver.findElement(By.cssSelector("form#frmlogin div.form-group:nth-child(2)>span")).getText();
+System.out.println(a);
+div.eleclass locate div with class name eleclass if more than one class exist then xpath 2 will be used By attribute //div[@title=∆Move mouse here∆]
+
+    div[title=Move mouse here]
+    div[title^=Move]
+    div[title$=here]
+    div[title*=mouse]
+
+you can use match operators for class and id as well, for example div[id^=menu-item] Child //div[@id=∆eleid∆]/*
+
+//div/h1
+div#eleid >*
+
+div#eleid >h1
+Descendant //div[@id=∆eleid∆]//h1 div h1 Will work for //div/*/‡../h1 By index //li[6] li:nth(5) 6th li element By content //a[contains(.,∆Issue 1164')] a:contains(Issue 1164) Case Sensitive By Child
+
+    //li[a[contains(.,∆Issue 1244')]]
+    //*[./a[contains(.,∆Issue 1244')]]
+    //ul[.//a[contains(.,∆Issue 1244')]]
+
+    li{a:contains(Issue 1244)}
+    ul{a:contains(Issue 1244)}
+
+<ul><li> Improved alert on changing the format <a href=ˆˆ>Issue 1244</a></li>
+
+<li>next sibling</li>‡</ul>
+
+<h3>Listing 2</h3>
+
+<ul><li> Improved alert on changing the format <a href=ˆˆ>Issue 1244</a></li>
+
+<li>next sibling</li>‡</ul>
+- See more at: http://blog.infostretch.com/are-you-ready-to-use-css-selectors-with-selenium/#sthash.ib8tEfeR.dpuf
+//======================================================================
+           Getting the Value from WebTables
+// =====================================================================
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript">
+    function output(resultText){
+      document.getElementById('output').childNodes[0].nodeValue=resultText;
+    }
+
+    function show_confirm(){
+      var confirmation=confirm("Chose an option.");
+      if (confirmation==true){
+        output("Confirmed.");
+      }
+      else{
+        output("Rejected!");
+      }
+    }
+
+    function show_alert(){
+      alert("I'm blocking!");
+      output("Alert is gone.");
+    }
+    function show_prompt(){
+      var response = prompt("What's the best web QA tool?","Selenium");
+      output(response);
+    }
+    function open_window(windowName){
+      window.open("newWindow.html",windowName);
+    }
+    </script>
+</head>
+<body>
+
+  <input type="button" id="btnConfirm" onclick="show_confirm()" value="Show confirm box" />
+  <input type="button" id="btnAlert" onclick="show_alert()" value="Show alert" />
+  <input type="button" id="btnPrompt" onclick="show_prompt()" value="Show prompt" />
+  <a href="newWindow.html" id="lnkNewWindow" target="_blank">New Window Link</a>
+  <input type="button" id="btnNewNamelessWindow" onclick="open_window()" value="Open Nameless Window" />
+  <input type="button" id="btnNewNamedWindow" onclick="open_window('Mike')" value="Open Named Window" />
+
+  <br />
+  <span id="output">
+  </span>
+</body>
+</html>
+
+
+
+// ==========================================================================================================
+//            Interview Questions  ==> Java
+// ==========================================================================================================
+
+1. Describe OOP
+2. What is interface and give examples
+3. What is the difference between function overriding and function overloading?
+4. What is super?
+5. What is the difference between HashMap and HashTable?
+6. What is Map?
+7. What is Multithreading? What are the different threading syntax?
+8. What is Constructor? How many types of constructor exist?
+9. How do you define multidimensional array?
+10.What is the use of Abstract classes?
+11. What is the use of Package?
+12. Which Jar file you have to use for Excel File?
+13. What is reflection?
+14. What is Object serialization?
+15. What is the difference between string and stringbuffer?
+16. What is By ref and By Value in Java?
+17. What are the different types of Data Type avaiable in Java?
+18. What is static and static final?
+==================================================================
+The static keyword in Java means that the variable or function is shared between 
+all instances of that class as it belongs to the type, not the actual objects
+themselves. So if you have a variable: private static int i = 0; and you increment it ( i++ ) in one instance, 
+the change will be reflected in all instances.
+Static methods can be used without instantiating an object.
+
+ The static can be:
+
+    variable (also known as class variable)
+    method (also known as class method)
+    block
+    nested class
+===========================================================================
+
+19. Wahat is try , Catch and Finally
+===========================================================================
+
+
+The finally block always executes when the try block exits. This ensures that the 
+finally block is executed even if an unexpected exception occurs. But finally is 
+useful for more than just exception handling ˘ it allows the programmer to avoid 
+having cleanup code accidentally bypassed by a return, continue, or break. Putting 
+cleanup code in a finally block is always a good practice, even when no exceptions 
+are anticipated.
+
+
+mportant: The finally block is a key tool for preventing resource leaks. When
+ closing a file or otherwise recovering resources, place the code in a finally block
+ to ensure that resource is always recovered.
+finally {
+    if (out != null) { 
+        System.out.println("Closing PrintWriter");
+        out.close(); 
+    } else { 
+        System.out.println("PrintWriter not open");
+    } 
+} 
+
+
+
+
+========================================================================
+20. What are the different threading Waits?
+=========================================================================
+
+Java is amulti threaded programming language which means we can develop multi 
+threaded program using Java. A multi threaded program contains two or more parts that
+ can run concurrently and each part can handle different task at the same time making optimal use of the available resources s
+pecially when your computer has multiple CPUs.
+
+
+
+New: A new thread begins its life cycle in the new state. It remains in this state until the program starts the thread. It is also referred to as a born thread.
+
+Runnable: After a newly born thread is started, the thread becomes runnable. A thread in this state is considered to be executing its task.
+
+Waiting: Sometimes, a thread transitions to the waiting state while the thread waits for another thread to perform a task.A thread transitions back to the runnable state only when another thread signals the waiting thread to continue executing.
+
+Timed waiting: A runnable thread can enter the timed waiting state for a specified interval of time. A thread in this state transitions back to the runnable state when that time interval expires or when the event it is waiting for occurs.
+
+Terminated ( Dead ): A runnable thread enters the terminated state when it completes its task or otherwise terminates.
+
+
+
+
+
+=========================================================================
+21. What is nested Class?
+22. Give one example of inheritance
+===========================================================================
+    class Employee{  
+     float salary=40000;  
+    }  
+    class Programmer extends Employee{  
+     int bonus=10000;  
+     public static void main(String args[]){  
+       Programmer p=new Programmer();  
+       System.out.println("Programmer salary is:"+p.salary);  
+       System.out.println("Bonus of Programmer is:"+p.bonus);  
+    }  
+    }  
+============================================================================
+23. What are the different types of Access Modifiers?
+
+
+/ ==========================================================================================================
+//            Interview Questions  ==> Ant, Junit,Testng,Maven
+// ==========================================================================================================
+1. What is the difference between junit and testng
+2. What are the different annotations available in Junit and Testng
+3. To run Parallel execution what is the parameter you have to pass in testng
+4. How do you run Maven Jobs?
+
+/ ==========================================================================================================
+//            Interview Questions  ==> Selenium
+// ==========================================================================================================
+
+1. How many ways you can locate a Object?
+2. Which one People should use xpath or cssselector?
+3. How do you close Multiple Windows
+7. How do you handle popup windows?
+8. How do you select multiple options from select list?
+9. How do you handle keyboard and mouse movement?
+10.How do you get all the Links from web Page?
+11. How do you handle the Variable id to locate an object?
+12. What is the difference between implicit and explicit wait?
+13. How do you run in Selenium grid
+14. What are the difference between Selenium RC server and webdriver?
+15. What is webdriver?
+16. How to Locate an object using cssselector?
+
+
+
+// ==================================
+What is a CSS Selector?
+
+We all know what CSS is, but how do we find and select the objects we need? A CSS selector is a formula that finds any one or many 
+elements that you want.
+Back to Basics
+
+
+<input type="text" name="username" />
+<input type="text" id="username_field" name="username" />
+
+input[id='username_field']
+input[name='username']
+input[id='username_field'][name='input[id='username_field']
+input[name='username']
+input[id='username_field'][name='username'] /*(for ultimate uniqueness.)*/
+input#username_field
+<a href="#" class="home-link link bold" />
+a[class='home-link link bold']
+a.home-link.link.bold
+a[class~='home-link'][class~='link'][class~='bold']
+
+Comparison operators
+    Equals (=)
+    tarts with (^=)
+    Ends with ($=)
+    Contains (*=)
+    Contains in a list (~=)
+<a href="#" id="link_1" />
+a[id^='link']
+<a href="#" id="link_1"
+<a href="#" id="link_12323aasdf_something" />
+a[id^='link'][id$='something']
+<div id="12345_my-div_abcde" />
+div[id*='my-div']
+
+<div class="class1 class2" />
+
