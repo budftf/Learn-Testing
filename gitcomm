@@ -1,0 +1,26 @@
+adb
+cd \git
+dir
+cd ..
+mkdir git1
+cd git1 
+git clone https://github.com/budftf/Learn-Testing
+dir
+cd l*
+dir
+git branch newbr
+git checkout newbr
+git pull https://github.com/budftf/Learn-Testing
+git status
+git add .
+git status
+git commit -m 'added gitcommands'
+git commit 
+git checkout master
+git merge newbr 
+git push -u origin master
+history
+git status
+f7 >  x
+doskey /history
+doskey /history  > gitcomm
